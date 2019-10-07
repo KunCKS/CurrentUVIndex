@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>紫外線即時監測</title>
+    <link rel="stylesheet" href="stylesheets/all.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="header ">
+      <div class="container bg-light pb-3">
+        <div class="loading" id="loading">
+          <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-7">
+              <div class="progress">
+                <div
+                  class="progress-bar progress-bar-striped progress-bar-animated"
+                  role="progressbar"
+                  style="width: 50%"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="header-img bg-cover pt-5  negative-row-margin"
+          style="background-image: url('https://images.unsplash.com/photo-1525490829609-d166ddb58678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1349&q=80');"
+        >
+          <div class="row flex-column align-items-center mt-5">
+            <div class="col-6 mb-4">
+              <h1 class="text-white text-center">
+                紫外線即時監測
+              </h1>
+            </div>
+            <div class="col-6 mt-5">
+              <div class="form-group">
+                <select
+                  id="inputState"
+                  class="form-control bg-transparent-gray"
+                >
+                  <option selected disabled>-- 請選擇行政區 --</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="row rectangle-banner-section justify-content-center bg-transparent"
+        >
+          <div
+            class="col-8 bg-white py-3 rounded-lg shadow-sm"
+            id="popularList"
+          >
+            <h4 class="h5">熱門行政區</h4>
+            <button class="btn btn-primary px-4 mr-3">臺北市</button>
+            <button class="btn btn-danger text-white px-4 mr-3">
+              新北市
+            </button>
+            <button class="btn btn-warning px-4 mr-3">
+              南投縣
+            </button>
+            <button class="btn btn-info px-4 mr-3">臺南市</button>
+            <button class="btn btn-success px-4 mr-3">高雄市</button>
+            <button class="btn btn-warning px-4 mr-3">關注地區</button>
+          </div>
+        </div>
+        <div
+          class="text-center d-flex justify-content-center align-items-center text-info"
+        >
+          <div>
+            - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            - - - - - - - - - - -&nbsp;&nbsp;
+          </div>
+
+          <i
+            class="material-icons text-info center-site icon-bd-round my-3"
+            style="z-index:2; background-color: #f8f9fa;"
+          >
+            arrow_drop_down
+          </i>
+          <div class="text-info">
+            &nbsp;&nbsp;- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            - - - - - - - - - - - - - - - - -
+          </div>
+        </div>
+      </div>
+    </header>
+    <section>
+      <div class="container bg-light py-3">
+        <h2 class="text-center text-primary mb-4" id="zoneTitle"></h2>
+        <div class="row" id="dataList">
+          <div class="col-6">
+            <div class="card mb-3">
+              <div
+                class="d-flex text-${textColor} py-6 justify-content-around align-items-end bg-${UVstatus} position-relative"
+              >
+                <a href="#" class="favorite btn text-danger">
+                  <i class="far fa-heart "></i
+                  ><i class="fas fa-heart d-none"></i>
+                </a>
+                <h3 class="display-4 mb-0 ">南投</h3>
+                <span class="">紫外線指數</span
+                ><span class="display-4 ">8</span>
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  <i class="fas fa-map-marker-alt mr-2"></i>
+                  <span>地區:</span><span>${UVIData[i].County}</span>
+                </p>
+                <p class="card-text">
+                  <i class="far fa-chart-bar mr-2"></i><span>發布單位：</span
+                  ><span>${UVIData[i].PublishAgency}</span>
+                </p>
+                <p class="card-text">
+                  <i class="far fa-clock mr-2"></i><span>發布時間：</span
+                  ><span>${UVIData[i].PublishTime}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container bg-light">
+        <nav
+          aria-label="Page navigation example"
+          class="d-flex justify-content-center"
+        >
+          <ul class="pagination mb-0 py-4" id="pageNav">
+            <li class="page-item">
+              <a class="page-link bg-transparent border-0" href="#"
+                >&lt;&nbsp;Previous</a
+              >
+            </li>
+            <li class="page-item">
+              <a class="page-link bg-transparent border-0" href="#">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link bg-transparent border-0" href="#">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link bg-transparent border-0" href="#">3</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link bg-transparent border-0" href="#"
+                >Next&nbsp;&gt;</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+    <footer>
+      <div class="container bg-info text-center py-4">
+        <h4 class="h6 text-white">紫外線即時監測</h4>
+        <h4 class="h6 text-warning">
+          資料來源：行政院環境保護署。環境資源資料開放平臺
+        </h4>
+      </div>
+    </footer>
+    <a href="#" id="scrollToTop" class="scrollToTop material-icons"
+      >expand_less</a
+    >
+  </body>
+  <script src="js/vendor.js"></script>
+  <script src="js/all.js"></script>
+</html>
