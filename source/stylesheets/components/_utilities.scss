@@ -1,0 +1,71 @@
+.icon-size {
+  width: 8px;
+  height: 5.5px;
+}
+
+.bg-transparent-gray {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.icon-bd-round {
+  border-radius: 50% !important;
+  border: 2px solid #559ac8 !important;
+}
+
+.font-times {
+  font-family: Times !important;
+}
+
+.font-Hel {
+  font-family: Helvetica Neue !important;
+}
+
+.bg-cover {
+  background-size: cover;
+  background-position: center center;
+}
+
+.expandToside {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.vertical-write {
+  writing-mode: vertical-lr;
+}
+
+.negative-row-margin {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.scrollToTop {
+  position: fixed;
+  bottom: 0;
+  right: 5%;
+  z-index: 10;
+  text-decoration: none;
+  font-size: 28px !important;
+  color: #ffffff;
+  background-color: rgba(85, 154, 200, 0.6);
+}
+
+.favorite {
+  position: absolute;
+  right: 2%;
+  top: -2%;
+  font-size: 1.25rem;
+  background-color: #fff;
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(36, 36, 36, 0.9);
+  z-index: 10000;
+}
