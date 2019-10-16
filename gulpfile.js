@@ -11,11 +11,11 @@ gulp.task('clean', function() {
     .pipe(clean())
 })
 
-gulp.task('cleanCSS', function() {
-  return gulp
-    .src(['./public/stylesheets/all.css'], { read: false, allowEmpty: true }) // 選項讀取：false阻止gulp讀取文件的內容，使此任務更快。allowEmpty: 允許資料夾不在也可執行。
-    .pipe(clean())
-})
+// gulp.task('cleanCSS', function() {
+//   return gulp
+//     .src(['./public/stylesheets/all.css'], { read: false, allowEmpty: true }) // 選項讀取：false阻止gulp讀取文件的內容，使此任務更快。allowEmpty: 允許資料夾不在也可執行。
+//     .pipe(clean())
+// })
 
 gulp.task('vendorJS', function() {
   return gulp
