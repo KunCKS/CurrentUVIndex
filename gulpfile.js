@@ -81,3 +81,13 @@ gulp.task(
     gulp.parallel('browserSync', 'watch')
   )
 )
+
+gulp.task(
+  "build",
+  gulp.series(
+    "clean",
+    "copy",
+    "sass",
+    "vendorJS"
+  )
+);
