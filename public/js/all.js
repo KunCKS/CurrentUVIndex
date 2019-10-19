@@ -102,7 +102,7 @@ function init() {
   for (let i = 0; i < dataLen; i++) {
     let favoriteIcon = 'far' // 預設輸出為空心的icon
     favoriteList.forEach(item => {
-      if (item.SiteName === UVIData[i].SiteName) {
+      if (item === UVIData[i].SiteName) {
         favoriteIcon = 'fas'
       }
     })
@@ -173,9 +173,13 @@ function init() {
 //-----------------更新頁面-----------------
 function updatePage(County) {
   let target
-  // 帶入變數zone即可找相符名稱的資料
   if (County === '關注地區') {
-    target = favoriteList
+    let favorite = UVIData.filter(item => {
+      if (favoriteList.indexOf(item.SiteName) !== -1) {
+        return item
+      }
+    })
+    target = favorite
   } else {
     target = [...UVIData]
     target = target.filter(item => {
@@ -191,7 +195,7 @@ function updatePage(County) {
     //建立元素輸出的模板
     let favoriteIcon = 'far' // 預設輸出為空心的icon
     favoriteList.forEach(item => {
-      if (item.SiteName === target[i].SiteName) {
+      if (item === target[i].SiteName) {
         favoriteIcon = 'fas'
       }
     })
@@ -410,14 +414,15 @@ dataItems.addEventListener('click', function(e) {
     // let data = localStorage.getItem('favoriteList')
     favoriteList = JSON.parse(localStorage.getItem('favoriteList')) || []
     e.target.setAttribute('class', 'fas fa-heart')
+    // 建立關注地區資料
     let favItem
     UVIData.forEach(item => {
       if (
         item.SiteName ===
         e.target.parentElement.parentElement.querySelector('h3').textContent
       ) {
-        item.like = true
-        favItem = item
+        // item.like = true
+        favItem = item.SiteName
       }
     })
     //上面forEach原本是用filter來過濾，但filter回傳的是陣列，若直接推到favoriteList裡面會變成大陣列中包著一個一個的陣列
@@ -431,7 +436,7 @@ dataItems.addEventListener('click', function(e) {
     e.target.setAttribute('class', 'far fa-heart')
     favoriteList = favoriteList.filter(item => {
       return (
-        item.SiteName !==
+        item !==
         e.target.parentElement.parentElement.querySelector('h3').textContent
       )
     })
